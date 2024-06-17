@@ -48,7 +48,7 @@ MIDDLEWARE = [
 ]
 
 
-CORS_ALLOWED_ORIGINS = ['https://alltheway.vercel.app']
+CORS_ALLOWED_ORIGINS = ['https://alltheway.vercel.app', 'https://alltheway-bffj2hqg0-atharvas-projects-f1cf4be9.vercel.app', 'https://alltheway-git-main-atharvas-projects-f1cf4be9.vercel.app']
 
 
 ROOT_URLCONF = 'AllTheWay.urls'
