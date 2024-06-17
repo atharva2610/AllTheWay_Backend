@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+
+    <title>AllTheWay</title>
+    <style>
+        *{
+            font-family: "Nunito", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body{
+            min-width: 320px;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .notification{
+                @apply w-full flex justify-between items-center p-3 my-2 text-white rounded-md shadow-2xl;
+            }
+
+            .icon{
+                @apply leading-none;
+            }
+
+            .button{
+                @apply flex items-center justify-center gap-1 bg-yellow-500 px-6 py-3 rounded-[36px];
+            }
+
+            .form{
+                @apply w-full max-w-md flex flex-col gap-8 m-auto;
+            }
+
+            .form-title{
+                @apply text-center text-2xl font-bold mb-4 md:mb-8;
+            }
+
+            .field-container{
+                @apply relative;
+            }
+
+            .field-label{
+                @apply absolute top-0 left-0 translate-x-8 -translate-y-1/2 bg-white px-2 text-zinc-500 text-sm;
+            }
+
+            .input-field{
+                @apply w-full p-3 text-base border focus:border-yellow-500 rounded-[36px] outline-none tracking-wider border-zinc-500;
+            }
+        }
+      </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,1,0" />
+</head>
+<body>
+    {% if messages %}
+    <section class="z-40 fixed top-10 left-1/2 max-w-xl w-full px-2 -translate-x-1/2">
+        {% for message in messages %}
+            {% if message.tags == "success" %}
+            <div class="notification bg-emerald-500">
+                <h2 class="text-base">{{message}}</h2>
+                <button onclick="removeMessage(this)" class="text-white">
+                    <span class="icon material-symbols-rounded">close</span>
+                </button>
+            </div>
+            {% else %}
+            <div class="notification bg-red-500">
+                <h2 class="text-base">{{message}}</h2>
+                <button onclick="removeMessage(this)" class="text-white">
+                    <span class="icon  material-symbols-rounded">close</span>
+                </button>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </section>
+    {% endif %}
+
+
+    <header class="px-4 md:px-16 py-8">
+        <a href="{% url 'home' %}">
+            <img class="size-14 rounded-[50%]" src="{% static 'atwLogo.png' %}">
+        </a>
+    </header>
+
+
+    <main class="px-4 sm:px-8 md:px-16 lg:px-36">
+        {% block main %}{% endblock main %}
+    </main>
+
+    <script>
+        function removeMessage(component){
+            component.parentElement.remove();
+        }
+    </script>
+
+    {% block scripts %}
+    {% endblock scripts %}
+</body>
+<html>

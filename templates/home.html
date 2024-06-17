@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+<section class="h-96 max-w-2xl m-auto my-8 flex items-center justify-center">
+    <div>
+        <img src="{% static 'allthewayLogo.jpeg' %}" class="w-80 m-auto rounded-xl"/>
+
+        <h2 class="mb-16 text-2xl font-bold text-center">On the way to deliver your favorite food.</h2>
+
+        <div class="flex justify-center">
+            <a href="http://localhost:5173" class="button hover:ring-1 hover:ring-yellow-500 hover:ring-offset-4">let's explore <span class="material-symbols-rounded icon">arrow_forward</span></a>
+        </div>
+    </div>
+
+    <div class="hidden lg:block -z-10 absolute top-20 right-[2vw] size-[24vw]">
+        <img src="{% static 'outline drawing3.png' %}" alt="freepik.com/" />
+    </div>
+
+    <div class="hidden lg:block -z-10 absolute bottom-0 left-[2vw] size-[28vw]">
+        <img src="{% static 'outline drawing1.jpg' %}" alt="freepik.com/" />
+    </div>
+</section>
+{% endblock main %}
