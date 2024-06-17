@@ -96,7 +96,8 @@ DATABASES = {
 }
 
 
-STORAGES = {"default": {"BACKEND": "cloud_storages.backends.appwrite.AppWriteStorage"}}
+STORAGES = {"default": {"BACKEND": "cloud_storages.backends.appwrite.AppWriteStorage"}, 
+            "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},}
 
 APPWRITE_API_KEY = os.environ.get('APPWRITE_API_KEY')
 APPWRITE_PROJECT_ID = os.environ.get('APPWRITE_PROJECT_ID')
