@@ -87,17 +87,16 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'DATABASE_NAME': os.environ.get('DATABASE_NAME'),
-        'DATABASE_USER': os.environ.get('DATABASE_USER'),
-        'DATABASE_PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-        'DATABASE_HOST': os.environ.get('DATABASE_HOST'),
-        'DATABASE_PORT': os.environ.get('DATABASE_PORT'),
+        'NAME': os.environ.get('DATABASE_NAME'),
+        'USER': os.environ.get('DATABASE_USER'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+        'HOST': os.environ.get('DATABASE_HOST'),
+        'PORT': os.environ.get('DATABASE_PORT'),
     }
 }
 
 
-STORAGES = {"default": {"BACKEND": "cloud_storages.backends.appwrite.AppWriteStorage"}, 
-            "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},}
+STORAGES = {"default": {"BACKEND": "cloud_storages.backends.appwrite.AppWriteStorage"},}
 
 APPWRITE_API_KEY = os.environ.get('APPWRITE_API_KEY')
 APPWRITE_PROJECT_ID = os.environ.get('APPWRITE_PROJECT_ID')
@@ -133,7 +132,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
