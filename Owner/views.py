@@ -316,9 +316,9 @@ class OrderSummary(APIView):
 
                 for order in orders:
                     data['info']['total_orders'] += 1
-                    data['info']['total_revenue'] += order.item_amount
                     if order.status == 'delivered':
                         data['info']['delivered_orders'] += 1
+                        data['info']['total_revenue'] += order.item_amount
                     elif order.status in ['ordered', 'preparing', 'prepared', 'delivering']:
                         data['info']['active_orders'] += 1
                     else:

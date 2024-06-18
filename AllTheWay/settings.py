@@ -9,7 +9,7 @@ load_dotenv(env_path)
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['alltheway-backend.onrender.com']
 
