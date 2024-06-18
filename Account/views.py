@@ -45,7 +45,7 @@ class UserApiView(APIView):
         
     def delete(self, request):
         account = request.user
-        account.email = str(randint(0,9999))+'deleted_'+account.email
+        account.email = str(randint(0,99))+'deleted_'+str(randint(0,99))+account.email
         account.is_active = False
         account.save()
         return Response('Account Deleted Successfully!', status=status.HTTP_204_NO_CONTENT)
