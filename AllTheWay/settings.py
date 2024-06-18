@@ -96,7 +96,8 @@ DATABASES = {
 }
 
 
-STORAGES = {"default": {"BACKEND": "cloud_storages.backends.appwrite.AppWriteStorage"},}
+STORAGES = {"default": {"BACKEND": "cloud_storages.backends.appwrite.AppWriteStorage"}, 
+            "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},}
 
 APPWRITE_API_KEY = os.environ.get('APPWRITE_API_KEY')
 APPWRITE_PROJECT_ID = os.environ.get('APPWRITE_PROJECT_ID')
@@ -132,7 +133,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
