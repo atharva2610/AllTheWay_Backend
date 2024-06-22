@@ -44,7 +44,7 @@ class CreateUpdateDeleteRestaurant(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
-        if Restaurant.objects.filter(owner__id=request.user.id).count() == 5:
+        if Restaurant.objects.filter(owner__id=request.user.id).count() >= 5:
             return Response('You have reached maximum Restaurant limit!', status=status.HTTP_403_FORBIDDEN)
         
         request.data['owner'] = request.user.id
